@@ -24,7 +24,7 @@ def col_test(scope, chunk):
                 
                 draw_square(scope, coor[0], coor[1],
                             coor[0]+chunk, coor[1]+chunk*2,
-                            colorsys.hsv_to_rgb(h, s, v))
+                            tuple(i*255 for i in colorsys.hsv_to_rgb(h, s, v)))
 
 err = "No error!"
 
@@ -34,7 +34,7 @@ try:
     col_test(s, 5)
 
     s.update()
-    time.sleep(5)
+    time.sleep(3)
     print("done")
 
 except Exception:
