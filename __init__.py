@@ -1,6 +1,7 @@
 from scope import Scope
 import time
 import traceback
+import colorsys
 
 def draw_square(scope, x1, y1, x2, y2, col):
     for y in range(y1, y2+1):
@@ -12,9 +13,9 @@ def col_test(scope, chunk):
     # create a generator for pixel choices
     gen = ((x*chunk, y*2*chunk) for x in range(52) for y in range(26))
     
-    for r in range(0, 255, 10):
-        for g in range(0, 255, 10):
-            for b in range(0, 255, 10):
+    for h in range(0, 255, 10):
+        for s in range(0, 255, 10):
+            for v in range(0, 255, 10):
                 try:
                     coor = next(gen)
 
@@ -23,7 +24,7 @@ def col_test(scope, chunk):
                 
                 draw_square(scope, coor[0], coor[1],
                             coor[0]+chunk, coor[1]+chunk*2,
-                            (r, g, b))
+                            colorsys.hsv_to_rgb(h, s, v))
 
 err = "No error!"
 
