@@ -10,6 +10,7 @@ try:
 
     s.update()
     time.sleep(2)
+    print("done")
 
 except Exception as e:
     print(e)
