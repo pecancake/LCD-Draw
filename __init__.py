@@ -9,7 +9,7 @@ try:
             s.draw_pixel((100+x, 100+y), (0, 255, 0))
 
     s.update()
-    time.sleep(2)
+    time.sleep(5)
     print("done")
 
 except Exception as e:
