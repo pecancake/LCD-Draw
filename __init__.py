@@ -15,9 +15,9 @@ def col_test(scope, chunk):
         for g in range(0, 255, 10):
             for b in range(0, 255, 10):
                 coor = next(gen)
-                draw_square(coor[0], coor[1],
+                draw_square(scope, coor[0], coor[1],
                             coor[0]+chunk, coor[1]+chunk,
-                            (r, g, b)
+                            (r, g, b))
                 
 try:  
     s = Scope()
