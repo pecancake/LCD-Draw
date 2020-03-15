@@ -14,7 +14,14 @@ def col_test(scope):
             for v in range(0, 480+1):
                 scope.draw_pixel((v, h), tuple(i*255 for i in colorsys.hsv_to_rgb(h/320, s/1, v/480)))
 
+def timefunc(func, args):
+    start = time.time()
+    func(*args)
+    end = time.time()
 
+    with open("runtime", "w") as f:
+        f.write(f"Time it took for function '{func.__name__}' to finish: {round(end-start, 4)} seconds")
+    
 err = "No error!\n"
 
 try:  
@@ -24,7 +31,7 @@ try:
 
     s.update()
     time.sleep(3)
-    print(4/0)
+    
     print("done")
 
 except Exception:
