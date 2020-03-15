@@ -12,7 +12,7 @@ def draw_text(scope, x, y, text):
                 for xi in range(5):
                     if ProtoFont[text[char].upper()][yi*5+xi] == "1":
                         f.write(f"writing {text[char]} to {x+char*5+xi}, {y+yi}")
-                        draw_square(scope, x+char*9+xi*2, y+yi*4, x+char*9+xi*2+3, y+yi*4+3, (0,0,0))
+                        draw_square(scope, x+char*9+xi*4, y+yi*4, x+char*9+xi*4+3, y+yi*4+3, (0,0,0))
 
         
 def draw_square(scope, x1, y1, x2, y2, col):
