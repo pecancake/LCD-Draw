@@ -1,12 +1,16 @@
 from scope import Scope
+import time
 
-try:
-    
+def draw_square(scope, x1, y1, x2, y2, col):
+    for y in range(y1, y2+1):
+        for x in range(x1, x2+1):
+            scope.draw_pixel((x, y), col)
+try:  
     s = Scope()
-
-    for y in range(100):
-        for x in range(100):
-            s.draw_pixel((100+x, 100+y), (0, 255, 0))
+    
+    draw_square(s, 50, 50, 100, 100, (0, 255, 0))
+    draw_square(s, 75, 75, 125, 125, (0, 0, 255))
+    draw_square(s, 100, 100, 150, 150, (255, 0, 0))
 
     s.update()
     time.sleep(5)

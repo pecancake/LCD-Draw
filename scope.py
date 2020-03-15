@@ -39,7 +39,7 @@ class Scope :
         print(f"Framebuffer size: {size[0]} x {size[1]}")
         self.screen = pygame.display.set_mode(size, pygame.FULLSCREEN)
         # Clear the screen to start
-        self.screen.fill((250, 238, 192))
+        self.screen.fill((199, 194, 103))
         # Render the screen
         pygame.display.update()
  
