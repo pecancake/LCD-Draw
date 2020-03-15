@@ -10,7 +10,11 @@ def draw_square(scope, x1, y1, x2, y2, col):
 def col_test(scope, chunk):
     """ Prerequsite: chunk can cleanly divide 320 and 480. """
     # create a generator for pixel choices
-    gen = ((x*chunk, y*chunk) for x in range(52) for y in range(26))
+    try:
+        gen = ((x*chunk, y*chunk) for x in range(52) for y in range(26))
+
+    except StopIteration:
+        return
     
     for r in range(0, 255, 10):
         for g in range(0, 255, 10):
