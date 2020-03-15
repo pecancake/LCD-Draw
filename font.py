@@ -25,7 +25,7 @@ def traverse(img, i, k):
     return code
 
 def read_font_file(img):
-    letters = {}
+    letters = {' ': '0000000000000000000000000'}
     alp = (c for c in 'ABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890<>-^/~')
 
     for i in range(0, img.size[1], 5):
@@ -37,4 +37,4 @@ def read_font_file(img):
 
 imgfile = Image.open('font.bmp')
 ProtoFont = read_font_file(imgfile)
-img.close()
+imgfile.close()

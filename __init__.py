@@ -10,7 +10,7 @@ def draw_text(scope, x, y, text):
         for yi in range(5):
             for xi in range(5):
                 if ProtoFont[text[char].upper()][yi*5+xi]:
-                    scope.draw_pixel(x+char*5+xi, y+yi, (0,0,0))
+                    scope.draw_pixel((x+char*5+xi, y+yi), (0,0,0))
 
         
 def draw_square(scope, x1, y1, x2, y2, col):
