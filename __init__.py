@@ -5,12 +5,20 @@ def draw_square(scope, x1, y1, x2, y2, col):
     for y in range(y1, y2+1):
         for x in range(x1, x2+1):
             scope.draw_pixel((x, y), col)
+
+def col_test(scope):
+    # create a generator for pixel choices
+    gen = ((x, y) for y in range(320) for x in range(480))
+    
+    for r in range(0, 255, 10):
+        for g in range(0, 255, 10):
+            for b in range(0, 255, 10):
+                scope.draw_pixel(next(gen), (r, g, b))
+                
 try:  
     s = Scope()
     
-    draw_square(s, 50, 50, 100, 100, (0, 255, 0))
-    draw_square(s, 75, 75, 125, 125, (0, 0, 255))
-    draw_square(s, 100, 100, 150, 150, (255, 0, 0))
+    col_test(s)
 
     s.update()
     time.sleep(5)
