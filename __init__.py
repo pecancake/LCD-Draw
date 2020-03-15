@@ -6,11 +6,13 @@ import colorsys
 
 
 def draw_text(scope, x, y, text):
-    for char in range(len(text)):
-        for yi in range(5):
-            for xi in range(5):
-                if ProtoFont[text[char].upper()][yi*5+xi]:
-                    scope.draw_pixel((x+char*5+xi, y+yi), (0,0,0))
+    with open("text", 'w') as f:
+        for char in range(len(text)):
+            for yi in range(5):
+                for xi in range(5):
+                    if ProtoFont[text[char].upper()][yi*5+xi]:
+                        f.write(f"writing {text[char]} to {x+char*5+xi}, {y+yi}")
+                        scope.draw_pixel((x+char*5+xi, y+yi), (0,0,0))
 
         
 def draw_square(scope, x1, y1, x2, y2, col):
