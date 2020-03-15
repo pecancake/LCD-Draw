@@ -50,6 +50,7 @@ class Scope :
         pygame.display.update()
 
     def draw_pixel(coor, col):
+        self.screen.set_at(coor, col)
         
     def test(self):
         # Fill the screen with red (255, 0, 0)
