@@ -1,12 +1,23 @@
 from scope import Scope
+from font import ProtoFont
 import time
 import traceback
 import colorsys
 
+
+def draw_text(scope, x, y, text):
+    for char in range(len(text)):
+        for yi in range(5):
+            for xi in range(5):
+                if ProtoFont[text[char].upper()][yi*5+xi]:
+                    scope.draw_pixel(x+char*5+xi, y+yi, (0,0,0))
+
+        
 def draw_square(scope, x1, y1, x2, y2, col):
     for y in range(y1, y2+1):
         for x in range(x1, x2+1):
             scope.draw_pixel((x, y), col)
+
 
 def col_test(scope):
     for h in range(0, 320+1):
@@ -14,21 +25,23 @@ def col_test(scope):
             for v in range(0, 480+1):
                 scope.draw_pixel((v, h), tuple(i*255 for i in colorsys.hsv_to_rgb(h/320, s/1, v/480)))
 
+
 def timefunc(func, args):
     start = time.time()
     func(*args)
     end = time.time()
 
     with open("runtime", "w") as f:
-        f.write(f"Time it took for function '{func.__name__}' to finish: {round(end-start, 4)} seconds")
+        f.write(f"\nTime it took for '{func.__name__}' to finish:\n{round(end-start, 4)} seconds\n\n")
+
     
 err = "No error!\n"
 
 try:  
     s = Scope()
     
-    col_test(s)
-
+    #timefunc(col_test, (s,))
+    draw_text(s, 30, 30, "This is a test string ~")
     s.update()
     time.sleep(3)
     

@@ -1,7 +1,5 @@
 from PIL import Image
 
-img = Image.open('font.bmp')
-
 def translate_pixel(x,y):
     if img.getpixel((x,y)) == (255, 0, 0, 255):
         return '1'
@@ -26,9 +24,15 @@ def traverse(i, k):
             code += translate_pixel(x, y)
     return code
 
-alp = (c for c in 'ABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890<>-^/~')
-letters = {}
-for i in range(0, img.size[1], 5):
-    for k in range(0, img.size[0], 5):
-        code = traverse(i,k)
-        letters[next(alp)] = code
+def read_font_file(img):
+    letters = {}
+    alp = (c for c in 'ABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890<>-^/~')
+
+    for i in range(0, img.size[1], 5):
+        for k in range(0, img.size[0], 5):
+            code = traverse(i,k)
+            letters[next(alp)] = code
+
+imgfile = Image.open('font.bmp')
+ProtoFont = read_font_file(imgfile)
+img.close()
