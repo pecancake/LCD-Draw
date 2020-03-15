@@ -10,7 +10,7 @@ def draw_square(scope, x1, y1, x2, y2, col):
 def col_test(scope, chunk):
     """ Prerequsite: chunk can cleanly divide 320 and 480. """
     # create a generator for pixel choices
-    gen = ((x*chunk, y*chunk) for x in range(52) for y in range(26))
+    gen = ((x*chunk, y*2*chunk) for x in range(52) for y in range(26))
     
     for r in range(0, 255, 10):
         for g in range(0, 255, 10):
@@ -22,20 +22,22 @@ def col_test(scope, chunk):
                     return
                 
                 draw_square(scope, coor[0], coor[1],
-                            coor[0]+chunk, coor[1]+chunk,
+                            coor[0]+chunk, coor[1]+chunk*2,
                             (r, g, b))
-                
+
+err = "No error!"
+
 try:  
     s = Scope()
     
-    col_test(s, 2)
+    col_test(s, 5)
 
     s.update()
     time.sleep(5)
     print("done")
 
 except Exception:
-    with open("error", "w") as f:
-        f.write(traceback.format_exc())
+    err = traceback.format_exc()
 
-input()
+with open("error", "w") as f:
+    f.write(err)
