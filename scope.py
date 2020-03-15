@@ -49,7 +49,7 @@ class Scope :
     def update(self):
         pygame.display.update()
 
-    def draw_pixel(coor, col):
+    def draw_pixel(self, coor, col):
         self.screen.set_at(coor, col)
         
     def test(self):
