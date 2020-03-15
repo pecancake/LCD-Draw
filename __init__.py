@@ -13,9 +13,9 @@ def col_test(scope, chunk):
     # create a generator for pixel choices
     gen = ((x*chunk, y*2*chunk) for x in range(52) for y in range(26))
     
-    for h in range(0, 255, 10):
-        for s in range(0, 255, 10):
-            for v in range(0, 255, 10):
+    for h in range(0, 320+1):
+        for s in [1]:
+            for v in range(0, 480+1):
                 try:
                     coor = next(gen)
 
@@ -24,7 +24,7 @@ def col_test(scope, chunk):
                 
                 draw_square(scope, coor[0], coor[1],
                             coor[0]+chunk, coor[1]+chunk*2,
-                            tuple(i*255 for i in colorsys.hsv_to_rgb(h, s, v)))
+                            tuple(i*255 for i in colorsys.hsv_to_rgb(h/320, s/1, v/480)))
 
 err = "No error!"
 
