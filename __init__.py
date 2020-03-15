@@ -30,7 +30,7 @@ def draw_image(scope, x, y, imgpath):
 
     for y in range(img.size[1]):
         for x in range(img.size[0]):
-            scope.draw_pixel((x, y), pix[img.size[0]*y+x])
+            scope.draw_pixel((x, y), pix[(x, y)][:3])
 
 
 def draw_square(scope, x1, y1, x2, y2, col):
