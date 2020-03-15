@@ -6,18 +6,26 @@ import colorsys
 
 
 def draw_text(scope, x, y, text):
+    frag_size = 4
+    char_space = frag_size * 5 + (frag_size - 2)
+
     with open("text", 'w') as f:
         for char in range(len(text)):
             for yi in range(5):
                 for xi in range(5):
                     if ProtoFont[text[char].upper()][yi*5+xi] == "1":
                         f.write(f"writing {text[char]} to {x+char*5+xi}, {y+yi}")
-                        draw_square(scope, x+char*7+xi*2, y+yi*2, x+char*7+xi*2+2, y+yi*2+1, (0,0,0))
+                        draw_square(scope,
+                                    x + (char * char_space) + (xi * frag_size),
+                                    y + (yi * frag_size),
+                                    x + (char * char_space) + ((xi + 1) * frag_size),
+                                    y + ((yi + 1) * frag_size),
+                                    (0, 0, 0))
 
         
 def draw_square(scope, x1, y1, x2, y2, col):
-    for y in range(y1, y2+1):
-        for x in range(x1, x2+1):
+    for y in range(y1, y2):
+        for x in range(x1, x2):
             scope.draw_pixel((x, y), col)
 
 
@@ -54,4 +62,4 @@ except Exception:
 
 with open("error", "w") as f:
     f.write(f'\n{err}\n')
-    
+
