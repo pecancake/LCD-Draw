@@ -29,6 +29,7 @@ try:
     print("done")
 
 except Exception as e:
-    print(e)
+    with open("error", "w") as f:
+        f.write(e)
 
 input()
