@@ -1,5 +1,6 @@
 from scope import Scope
 import time
+import traceback
 
 def draw_square(scope, x1, y1, x2, y2, col):
     for y in range(y1, y2+1):
@@ -28,8 +29,8 @@ try:
     time.sleep(5)
     print("done")
 
-except Exception as e:
+except Exception:
     with open("error", "w") as f:
-        f.write(e)
+        f.write(traceback.format_exc())
 
 input()
