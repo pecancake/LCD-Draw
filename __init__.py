@@ -12,7 +12,7 @@ def draw_text(scope, x, y, text):
                 for xi in range(5):
                     if ProtoFont[text[char].upper()][yi*5+xi] == "1":
                         f.write(f"writing {text[char]} to {x+char*5+xi}, {y+yi}")
-                        draw_square(scope, x+char*7+xi, y+yi*2, x+char*7+xi+1, y+yi*2+1, (0,0,0))
+                        draw_square(scope, x+char*9+xi, y+yi*4, x+char*9+xi+3, y+yi*4+3, (0,0,0))
 
         
 def draw_square(scope, x1, y1, x2, y2, col):
@@ -43,7 +43,7 @@ try:
     s = Scope()
     
     #timefunc(col_test, (s,))
-    draw_text(s, 30, 30, "This is a test string ~")
+    draw_text(s, 20, 20, "This is a test string ~")
     s.update()
     time.sleep(3)
     
