@@ -28,9 +28,13 @@ def draw_image(scope, x, y, imgpath):
     img = Image.open(imgpath)
     pix = img.load()
 
-    for y in range(img.size[1]):
-        for x in range(img.size[0]):
-            scope.draw_pixel((x, y), pix[(x, y)][:3])
+    for yi in range(img.size[1]):
+        for xi in range(img.size[0]):
+            r, g, b, a = pix[(xi, yi)]
+            if a != 0:
+                scope.draw_pixel((x+xi, y+yi), (r, g, b))
+
+    img.close()
 
 
 def draw_square(scope, x1, y1, x2, y2, col):
