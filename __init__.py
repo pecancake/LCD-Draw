@@ -10,7 +10,7 @@ def draw_text(scope, x, y, text):
         for char in range(len(text)):
             for yi in range(5):
                 for xi in range(5):
-                    if ProtoFont[text[char].upper()][yi*5+xi]:
+                    if ProtoFont[text[char].upper()][yi*5+xi] == "1":
                         f.write(f"writing {text[char]} to {x+char*5+xi}, {y+yi}")
                         scope.draw_pixel((x+char*5+xi, y+yi), (0,0,0))
 
