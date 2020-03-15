@@ -5,9 +5,9 @@ import traceback
 import colorsys
 
 
-def draw_text(scope, x, y, text):
-    frag_size = 4
-    char_space = frag_size * 5 + (frag_size - 2)
+def draw_text(scope, x, y, size, text):
+    frag_size = size
+    char_space = frag_size * 5 + max(1, frag_size - 2)
 
     with open("text", 'w') as f:
         for char in range(len(text)):
@@ -51,7 +51,14 @@ try:
     s = Scope()
     
     #timefunc(col_test, (s,))
-    draw_text(s, 20, 20, "This is a test string ~")
+    draw_text(s, 5, 5, 1, "This is a test string ~")
+    draw_text(s, 5, 10, 2, "This is a test string ~")
+    draw_text(s, 5, 15, 3, "This is a test string ~")
+    draw_text(s, 5, 25, 5, "This is a test string ~")
+    draw_text(s, 5, 40, 8, "This is a test string ~")
+    draw_text(s, 5, 60, 13, "This is a test string ~")
+    draw_text(s, 5, 100, 21, "This is a test string ~")
+    draw_text(s, 5, 150, 34, "This is a test string ~")
     s.update()
     time.sleep(3)
     
