@@ -30,8 +30,8 @@ def draw_image(scope, x, y, imgpath):
 
     for yi in range(img.size[1]):
         for xi in range(img.size[0]):
-            r, g, b, a = pix[(xi, yi)]
-            if a != 0:
+            r, g, b, *a = pix[(xi, yi)]
+            if not a:
                 scope.draw_pixel((x+xi, y+yi), (r, g, b))
 
     img.close()
