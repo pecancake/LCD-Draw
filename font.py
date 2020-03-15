@@ -25,7 +25,7 @@ def traverse(img, i, k):
     return code
 
 def read_font_file(img):
-    letters = {' ': '0000000000000000000000000'}
+    letters = {' ': '0'*25}
     alp = (c for c in 'ABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890<>-^/~')
 
     for i in range(0, img.size[1], 5):
