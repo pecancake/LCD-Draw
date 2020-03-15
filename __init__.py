@@ -3,6 +3,7 @@ from font import ProtoFont
 import time
 import traceback
 import colorsys
+from PIL import Image
 
 
 def draw_text(scope, x, y, size, text):
@@ -22,7 +23,16 @@ def draw_text(scope, x, y, size, text):
                                     y + ((yi + 1) * frag_size),
                                     (0, 0, 0))
 
-        
+
+def draw_image(scope, x, y, imgpath):
+    img = Image.open(imgpath)
+    pix = img.load()
+
+    for y in range(img.size[1]):
+        for x in range(img.size[0]):
+            scope.draw_pixel((x, y), pix[img.size[0]*y+x])
+
+
 def draw_square(scope, x1, y1, x2, y2, col):
     for y in range(y1, y2):
         for x in range(x1, x2):
@@ -50,15 +60,7 @@ err = "No error!\n"
 try:  
     s = Scope()
     
-    #timefunc(col_test, (s,))
-    draw_text(s, 5, 5, 1, "This is a test string ~")
-    draw_text(s, 5, 20, 2, "This is a test string ~")
-    draw_text(s, 5, 45, 3, "This is a test string ~")
-    draw_text(s, 5, 70, 4, "This is a test string ~")
-    draw_text(s, 5, 100, 5, "This is a test string ~")
-    draw_text(s, 5, 130, 6, "This is a test string ~")
-    draw_text(s, 5, 170, 7, "This is a test string ~")
-    draw_text(s, 5, 210, 8, "This is a test string ~")
+    timefunc(draw_image, (s, 10, 10, "testpic.png"))
     s.update()
     time.sleep(3)
     
