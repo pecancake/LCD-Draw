@@ -15,10 +15,10 @@ def col_test(scope, chunk):
     for h in range(0, 320+1):
         for s in [1]:
             for v in range(0, 480+1):
-                scope.draw_pixel((h, v), tuple(i*255 for i in colorsys.hsv_to_rgb(h/320, s/1, v/480)))
+                scope.draw_pixel((v, h), tuple(i*255 for i in colorsys.hsv_to_rgb(h/320, s/1, v/480)))
 
 
-err = "No error!"
+err = "No error!\n"
 
 try:  
     s = Scope()
