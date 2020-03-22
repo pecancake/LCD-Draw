@@ -1,6 +1,0 @@
-
-Traceback (most recent call last):
-  File "C:/Users/peter/Documents/GitHub/LCD-Draw/__init__.py", line 57, in <module>
-    s.update()
-AttributeError: 'str' object has no attribute 'update'
-
